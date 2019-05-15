@@ -4,7 +4,7 @@ import os
 import glob
 #GPIO SETUP
 GPIO.setmode(GPIO.BCM)
-Button = 21
+Button = 7
 n = 1
 GPIO.setup(Button,GPIO.IN)
 #loop
@@ -17,7 +17,7 @@ while 1 == 1:#loops forever till keyboard interupt (ctr + C)
     #Get FileName
     now = time.strftime("Date%m-%d-%yTime%H-%M-%S")
     #Make command to run OCMMDS
-    command = "bash oscmds.sh " +  str(now)
+    command = "bash main.sh " +  str(now)
     
     # -- OSMC.sh is an Shell script that
     # -- is responsible for taking the picture and
@@ -36,7 +36,7 @@ while 1 == 1:#loops forever till keyboard interupt (ctr + C)
   
     # ----| Email     |---- #
     print("Email")#email
-    emailcommand = 'python3 IOTNOTIFY2.py "Someone is at the door"' + ' "photos/' + now + '.jpg"'
+    emailcommand = 'python3 MailNotify.py "Someone is at the door"' + ' "foto/' + now + '.jpg"'
     os.system(emailcommand) #running the Email script with:
     #-- the subject as "Someone is at the door" and the filename
     #-- We made before at the -Photo & Bell- section
