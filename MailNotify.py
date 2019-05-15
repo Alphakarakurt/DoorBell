@@ -14,12 +14,12 @@ msg['Reply-to'] = 'ykara1626@gmail.com'
  
 msg.preamble = 'Multipart massage.\n'
  
-part = MIMEText("Hello Sir/Ma'am, There is some one at your door. A picture of this person has been atached.")
+part = MIMEText("Merhaba, Kapınızdaki kişinin fotografi ektedir")
 msg.attach(part)
  
-#part = MIMEApplication(open(str(sys.argv[2]),"rb").read())
-#part.add_header('Content-Disposition', 'attachment', filename=str())
-#msg.attach(part)
+part = MIMEApplication(open(str(sys.argv[2]),"rb").read())
+part.add_header('Content-Disposition', 'attachment', filename=str())
+msg.attach(part)
 
 
 server = smtplib.SMTP("smtp.gmail.com:587")
