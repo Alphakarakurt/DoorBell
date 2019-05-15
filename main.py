@@ -9,24 +9,21 @@ n = 1
 GPIO.setup(Button,GPIO.IN)
 #loop
 print("Program Running")
-while 1 == 1:#loops forever till keyboard interupt (ctr + C) 
-  if GPIO.input(Button) == False:#when button pressed:
+while 1 == 1:#Devre surekli calisacak 
+  if GPIO.input(Button) == False:#Buttona basildi
     print("Button Pressed")
     
     #    ------|    photo & Bell    |------ #
-    #Get FileName
+    #Belge isimlendirme
     now = time.strftime("Date%m-%d-%yTime%H-%M-%S")
-    #Make command to run OCMMDS
+    #Main.sh calıstırmak icin
     command = "bash main.sh " +  str(now)
     
-    # -- OSMC.sh is an Shell script that
-    # -- is responsible for taking the picture and
-    # -- Making the Doorbell Noise
+    # -- Main.sh bir Shell script dosyası
+    # -- Fotograf cekiminden sorumlu
+    # -- -----------------
     
-    # --- We insert the "Now" argument so the python
-    # --- script knows what the file name of the
-    # --- picture will be so it can pass it on into the
-    # --- email script (so it knows what file to email
+    
     
     #run command
     os.system(command)
@@ -37,12 +34,9 @@ while 1 == 1:#loops forever till keyboard interupt (ctr + C)
     # ----| Email     |---- #
     print("Email")#email
     emailcommand = 'python3 MailNotify.py "Someone is at the door"' + ' "foto/' + now + '.jpg"'
-    os.system(emailcommand) #running the Email script with:
-    #-- the subject as "Someone is at the door" and the filename
-    #-- We made before at the -Photo & Bell- section
-    
+    os.system(emailcommand) #Email scripti calisiyor
     # -- End Diagnostic Info
     print("Done Process")
-    #-space out for next "Press of Button"
+    #Bosluk
     print("")
     print("")
